@@ -32,7 +32,13 @@ pipeline {
           bat 'gradle sonarqube'
         }
 
-        waitForQualityGate true
+        script{
+          def g = waitForQualityGate()
+          if(g.status != 'OK') {
+            error "Pipeline aborted due to quality gate failure"
+          }
+        }
+
       }
     }
 
