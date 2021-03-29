@@ -42,5 +42,17 @@ pipeline {
       }
     }
 
+    stage('Deployment') {
+      steps {
+        bat 'gradle publish'
+      }
+    }
+
+    stage('Slack Notification') {
+      steps {
+        slackSend(message: 'Project is built newly and deployed', channel: '#deployment', baseUrl: 'https://hooks.slack.com/services/', token: 'TC8UCL05R/B01SN4V9S4B/o7VWb53Oaf54K59R6O5nMp79')
+      }
+    }
+
   }
 }
