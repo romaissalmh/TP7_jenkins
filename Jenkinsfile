@@ -31,8 +31,8 @@ pipeline {
         withSonarQubeEnv('sonar') {
           bat 'gradle sonarqube'
         }
-        waitForQualityGate abortPipeline: true
 
+        waitForQualityGate true
       }
     }
 
