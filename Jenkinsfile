@@ -16,5 +16,11 @@ pipeline {
       }
     }
 
+    stage('Mail Notification') {
+      steps {
+        mail(subject: 'Build status', body: 'Le build a été exécuté.', cc: 'hr_kessi@esi.dz')
+      }
+    }
+
   }
 }
