@@ -18,7 +18,7 @@ pipeline {
 
     stage('Mail Notification') {
       steps {
-        mail(subject: 'Build status', body: 'The build has been pushed. The result is: ${currentBuild.currentResult}', to: 'hr_kessi@esi.dz')
+        mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
       }
     }
 
