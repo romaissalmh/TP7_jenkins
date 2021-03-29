@@ -8,9 +8,9 @@ pipeline {
           archiveArtifacts 'build/docs/javadocc/*'
           junit 'build/test-results/test/*.xml'
         }
-        failure{
-          mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
 
+        failure {
+          mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
         }
 
       }
