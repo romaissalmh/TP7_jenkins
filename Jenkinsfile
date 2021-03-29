@@ -8,9 +8,9 @@ pipeline {
           archiveArtifacts 'build/docs/javadoc/*'
           junit 'build/test-results/test/*.xml'
         }
-        failure{
-          mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
 
+        failure {
+          mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
         }
 
       }
@@ -23,6 +23,12 @@ pipeline {
     stage('Mail Notification') {
       steps {
         mail(subject: 'Build status', body: "The build has been pushed. The result is: ${currentBuild.currentResult}", to: 'hr_kessi@esi.dz')
+      }
+    }
+
+    stage('Code Analysis') {
+      steps {
+        waitForQualityGate true
       }
     }
 
