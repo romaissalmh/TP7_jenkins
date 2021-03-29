@@ -28,9 +28,10 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
-        withSonarQubeEnv('SonarQube'){
+        withSonarQubeEnv('SonarQube') {
           bat 'gradle sonarqube'
         }
+
         waitForQualityGate true
       }
     }
