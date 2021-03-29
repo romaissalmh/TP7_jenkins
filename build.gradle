@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id "com.github.spacialcircumstances.gradle-cucumber-reporting" version "0.1.22"
+    id 'jacoco'
+    id "org.sonarqube" version "3.1.1"
+    id "net.madeng.slack" version "0.0.23"
+}
+apply plugin: 'maven-publish'
+
+group 'com.example'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+
+publishing {
+    repositories {
+        maven {
+            url 'https://mymavenrepo.com/repo/iwqqtc73ffEcLaZbH8Q0/'
+            credentials {
+                username 'myMavenRepo'
+                password '123456'
+            }
+        }
+    }
+
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
