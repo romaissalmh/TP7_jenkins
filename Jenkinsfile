@@ -32,6 +32,7 @@ pipeline {
           bat 'gradle sonarqube'
         }
         waitForQualityGate abortPipeline: true
+
       }
     }
 
