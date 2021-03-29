@@ -28,17 +28,10 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
-        withSonarQubeEnv('SonarQube') {
+        withSonarQubeEnv('sonar') {
           bat 'gradle sonarqube'
         }
-
-        script{
-          def g = waitForQualityGate()
-          if(g.status != 'OK') {
-            error "Pipeline aborted due to quality gate failure"
-          }
-        }
-
+        waitForQualityGate abortPipeline: true
       }
     }
 
