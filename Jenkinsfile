@@ -5,7 +5,8 @@ pipeline {
       post {
         success {
           archiveArtifacts 'build/libs/*.jar'
-          junit 'build/reports/tests/test/*.xml'
+          archiveArtifacts 'build/docs/javadoc/*.xml'
+          junit 'build/tests-results/test/*.xml'
         }
 
       }
