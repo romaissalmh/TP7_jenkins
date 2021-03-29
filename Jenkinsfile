@@ -32,7 +32,13 @@ pipeline {
           bat 'gradle sonarqube'
         }
 
-        waitForQualityGate  abortPipeline:true
+        waitForQualityGate true
+      }
+    }
+
+    stage('Test reporting') {
+      steps {
+        cucumber '**/cucumber.json'
       }
     }
 
