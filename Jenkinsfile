@@ -9,7 +9,7 @@ pipeline {
       post{
       	success { 
       		archiveArtifacts 'build/libs/*.jar'
-            junit 'build/reports/**/*.xml'
+            junit 'build/test-results/*.xml'
        }
       }
     }
